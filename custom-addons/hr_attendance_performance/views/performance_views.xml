@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- PERFORMANCE EVALUATION VIEWS -->
+    <record id="view_hr_attendance_performance_tree" model="ir.ui.view">
+        <field name="name">hr.attendance.performance.tree</field>
+        <field name="model">hr.attendance.performance</field>
+        <field name="arch" type="xml">
+            <tree string="Performance Evaluations">
+                <field name="employee_id"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="total_hours"/>
+                <field name="average_weekly_hours"/>
+                <field name="status_rule_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_hr_attendance_performance_form" model="ir.ui.view">
+        <field name="name">hr.attendance.performance.form</field>
+        <field name="model">hr.attendance.performance</field>
+        <field name="arch" type="xml">
+            <form string="Performance Evaluation">
+                <header>
+                    <button name="action_calculate" string="Calculate" type="object" class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                            <field name="start_date"/>
+                            <field name="end_date"/>
+                        </group>
+                        <group>
+                            <field name="status_rule_id" widget="badge"/>
+                            <field name="total_hours"/>
+                            <field name="duration_weeks"/>
+                            <field name="average_weekly_hours"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Monthly Details">
+                            <field name="line_ids">
+                                <tree editable="bottom" create="0" delete="0">
+                                    <field name="month_name"/>
+                                    <field name="total_hours"/>
+                                    <field name="average_weekly_hours"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Report Notes">
+                            <field name="notes" placeholder="Add custom notes or recommendations for the PDF report..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_hr_attendance_performance" model="ir.actions.act_window">
+        <field name="name">Performance Evaluations</field>
+        <field name="res_model">hr.attendance.performance</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Performance Evaluation
+            </p>
+        </field>
+    </record>
+
+    <!-- PERFORMANCE RULE VIEWS -->
+    <record id="view_hr_attendance_performance_rule_tree" model="ir.ui.view">
+        <field name="name">hr.attendance.performance.rule.tree</field>
+        <field name="model">hr.attendance.performance.rule</field>
+        <field name="arch" type="xml">
+            <tree string="Performance Rules" editable="bottom">
+                <field name="name"/>
+                <field name="min_hours"/>
+                <field name="max_hours"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_hr_attendance_performance_rule" model="ir.actions.act_window">
+        <field name="name">Performance Rules</field>
+        <field name="res_model">hr.attendance.performance.rule</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- MENUS -->
+    <!-- Main Menu for Performance in Attendance App -->
+    <menuitem id="menu_hr_attendance_performance_root"
+              name="Performance"
+              parent="hr_attendance.menu_hr_attendance_root"
+              sequence="25"/>
+
+    <menuitem id="menu_hr_attendance_performance_evaluation"
+              name="Evaluations"
+              parent="menu_hr_attendance_performance_root"
+              action="action_hr_attendance_performance"
+              sequence="1"/>
+
+    <menuitem id="menu_hr_attendance_performance_rule"
+              name="Rules"
+              parent="menu_hr_attendance_performance_root"
+              action="action_hr_attendance_performance_rule"
+              sequence="2"
+              groups="hr_attendance.group_hr_attendance_manager"/>
+
+</odoo>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="report_trainer_schedule_document">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.external_layout">
+                        <div class="page">
+                            <h2>Jadwal Pertemuan: <span t-field="o.name"/></h2>
+
+                            <div class="row mt32 mb32">
+                                <div class="col-auto">
+                                    <strong>Siswa:</strong> <span t-field="o.student_id.name"/>
+                                </div>
+                                <div class="col-auto">
+                                    <strong>Trainer:</strong> <span t-field="o.trainer_id.name"/>
+                                </div>
+                                <div class="col-auto">
+                                    <strong>Tanggal &amp; Jam:</strong> <span t-field="o.date"/>
+                                </div>
+                            </div>
+
+                            <div class="row mb32">
+                                <div class="col-auto">
+                                    <strong>Pertemuan Ke-:</strong> <span t-field="o.meeting_number"/>
+                                </div>
+                                <div class="col-auto">
+                                    <strong>Kelas:</strong> <span t-field="o.class_type"/>
+                                </div>
+                            </div>
+
+                            <p>
+                                <strong>Catatan:</strong>
+                                <span t-field="o.notes"/>
+                            </p>
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

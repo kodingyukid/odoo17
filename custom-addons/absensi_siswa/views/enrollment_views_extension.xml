@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_siswa_kursus_enrollment_form_absensi_ext" model="ir.ui.view">
+            <field name="name">siswa.kursus.enrollment.form.absensi.ext</field>
+            <field name="model">siswa.kursus.enrollment</field>
+            <field name="inherit_id" ref="students.view_siswa_kursus_enrollment_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/field[@name='jumlah_pertemuan_wajib']" position="after">
+                    <field name="jumlah_pertemuan_diikuti"/>
+                </xpath>
+                <xpath expr="//button[@name='action_create_or_view_certificate_assessment']" position="attributes">
+                    <attribute name="invisible">status != 'aktif' or jumlah_pertemuan_diikuti &lt; jumlah_pertemuan_wajib</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_siswa_kursus_enrollment_tree_absensi_ext" model="ir.ui.view">
+            <field name="name">siswa.kursus.enrollment.tree.absensi.ext</field>
+            <field name="model">siswa.kursus.enrollment</field>
+            <field name="inherit_id" ref="students.view_siswa_kursus_enrollment_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='jumlah_pertemuan_wajib']" position="before">
+                    <field name="jumlah_pertemuan_diikuti"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>

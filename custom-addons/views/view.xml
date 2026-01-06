@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Tree View -->
+    <record id="view_modul_pembelajaran_tree" model="ir.ui.view">
+        <field name="name">modul.pembelajaran.tree</field>
+        <field name="model">modul.pembelajaran</field>
+        <field name="arch" type="xml">
+            <tree string="Materi Pembelajaran">
+                <field name="name"/>
+                <field name="link_materi"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_modul_pembelajaran_form" model="ir.ui.view">
+        <field name="name">modul.pembelajaran.form</field>
+        <field name="model">modul.pembelajaran</field>
+        <field name="arch" type="xml">
+            <form string="Materi Pembelajaran">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="link_materi"/>
+                    </group>
+                    <notebook>
+                        <page string="Materi" name="materi">
+                            <field name="materi_ids">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="description"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_modul_pembelajaran" model="ir.actions.act_window">
+        <field name="name">Materi Pembelajaran</field>
+        <field name="res_model">modul.pembelajaran</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Belum ada materi pembelajaran.
+            </p><p>
+                Klik untuk menambah materi baru.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu -->
+    <menuitem id="menu_modul_pembelajaran_root"
+              name="Modul Pembelajaran"
+              sequence="10"/>
+
+    <menuitem id="menu_materi_pembelajaran"
+              name="Daftar Materi"
+              parent="menu_modul_pembelajaran_root"
+              action="action_modul_pembelajaran"
+              sequence="10"/>
+
+</odoo>

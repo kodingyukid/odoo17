@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <report
+            id="action_report_trainer_schedule"
+            model="trainer.schedule"
+            string="Jadwal Pertemuan"
+            report_type="qweb-pdf"
+            name="jadwal_trainer.report_trainer_schedule_document"
+            file="jadwal_trainer.report_trainer_schedule_document"
+            print_report_name="(object.name or '').replace('/', '_')"
+        />
+    </data>
+</odoo>

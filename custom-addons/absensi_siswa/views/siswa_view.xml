@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_absensi_siswa_siswa" model="ir.actions.act_window">
+        <field name="name">Siswa (Customer)</field>
+        
+        <field name="res_model">res.partner</field>
+        
+        <field name="view_mode">tree,form</field>
+        
+        <field name="context">{'search_default_customer': 1}</field>
+    </record>
+
+    <menuitem 
+        id="menu_absensi_siswa_siswa"
+        name="Data Siswa (Customer)"
+        action="action_absensi_siswa_siswa"
+        parent="menu_absensi_siswa_konfigurasi"
+        sequence="10"/>
+</odoo>

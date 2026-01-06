@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="whatsapp_send_wizard_form_view" model="ir.ui.view">
+            <field name="name">whatsapp.send.wizard.form</field>
+            <field name="model">whatsapp.send.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Kirim Pesan WhatsApp">
+                    <group>
+                        <field name="phone_number"/>
+                        <field name="message"/>
+                    </group>
+                    <footer>
+                        <button name="action_send_message" string="Kirim" type="object" class="btn-primary"/>
+                        <button string="Batal" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_whatsapp_send_wizard" model="ir.actions.act_window">
+            <field name="name">Kirim Pesan WhatsApp</field>
+            <field name="res_model">whatsapp.send.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</odoo>

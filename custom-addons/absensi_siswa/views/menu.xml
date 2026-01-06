@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <menuitem 
+        id="menu_absensi_siswa_root"
+        name="Absensi Siswa"
+        web_icon="absensi_siswa,static/description/icon.png"
+        sequence="10"/>
+
+    <menuitem 
+        id="menu_absensi_siswa_absensi"
+        name="Absensi"
+        parent="menu_absensi_siswa_root"
+        sequence="10"/>
+        
+    <menuitem 
+        id="menu_absensi_siswa_konfigurasi"
+        name="Konfigurasi"
+        parent="menu_absensi_siswa_root"
+        sequence="100"/>
+</odoo>

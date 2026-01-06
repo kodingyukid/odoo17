@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!--
+            KONFIGURASI INTEGRASI GOOGLE DRIVE
+            
+            Untuk mengaktifkan fitur upload ke Google Drive, Anda perlu melakukan beberapa hal:
+
+            1. Dapatkan File `client_secret.json` dari Google API Console.
+               - Buka https://console.developers.google.com/
+               - Buat proyek baru.
+               - Aktifkan "Google Drive API".
+               - Buat kredensial "OAuth client ID".
+               - Pilih "Web Application".
+               - Di "Authorized redirect URIs", tambahkan URL Odoo Anda diikuti `/google_drive/auth_callback`
+                 (Contoh: http://localhost:8069/google_drive/auth_callback). Controller ini perlu dibuat jika
+                 Anda ingin alur otentikasi penuh di dalam Odoo. Untuk saat ini, kita akan pakai skrip.
+               - Download file JSON dan ganti konten placeholder di bawah.
+
+            2. Isi Parameter `google.drive.client.secret.json` di bawah dengan konten file
+               `client_secret.json` yang Anda download. Hapus placeholder dan paste kontennya di sini.
+            
+            3. Jalankan Skrip `generate_token.py` (akan disediakan) untuk mendapatkan token awal.
+               Skrip ini akan meminta Anda membuka browser dan melakukan otorisasi.
+               
+            4. Salin output dari skrip tersebut dan paste ke parameter `google.drive.token.json`.
+               Ini bisa dilakukan via menu Technical -> Parameters -> System Parameters di Odoo.
+        -->
+
+        <record id="google_drive_main_folder_id" model="ir.config_parameter">
+            <field name="key">google.drive.main.folder.id</field>
+            <field name="value">1-7-jbcr0Ea_JXDrPFCc47nUwYeISUlfc</field>
+        </record>
+
+        <record id="google_drive_client_secret_json" model="ir.config_parameter">
+            <field name="key">google.drive.client.secret.json</field>
+            <field name="value">
+                {
+                  "installed": {
+                    "client_id": "GANTI_DENGAN_CLIENT_ID_ANDA.apps.googleusercontent.com",
+                    "project_id": "ganti-dengan-project-id-anda",
+                    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+                    "token_uri": "https://oauth2.googleapis.com/token",
+                    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+                    "client_secret": "GANTI_DENGAN_CLIENT_SECRET_ANDA",
+                    "redirect_uris": ["http://localhost"]
+                  }
+                }
+            </field>
+        </record>
+        
+        <record id="google_drive_token_json" model="ir.config_parameter">
+            <field name="key">google.drive.token.json</field>
+            <field name="value">{}</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_absensi_siswa_absensi_tree" model="ir.ui.view">
+        <field name="name">absensi.siswa.absensi.tree</field>
+        <field name="model">absensi.siswa.absensi</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="siswa_id"/>
+                <field name="enrollment_id" optional="hidden"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Define the action for the button FIRST -->
+    <record id="action_absensi_siswa_absensi_line" model="ir.actions.act_window">
+        <field name="name">Detail Pertemuan</field>
+        <field name="res_model">absensi.siswa.absensi.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('absensi_id', '=', active_id)]</field>
+        <field name="context">{'default_absensi_id': active_id}</field>
+    </record>
+
+    <!-- THEN, define the form view that uses the action -->
+    <record id="view_absensi_siswa_absensi_form" model="ir.ui.view">
+        <field name="name">absensi.siswa.absensi.form</field>
+        <field name="model">absensi.siswa.absensi</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="%(absensi_siswa.action_absensi_siswa_absensi_line)d" type="action" class="oe_stat_button" icon="fa-graduation-cap">
+                            <field name="pertemuan_count" widget="statinfo" string="Pertemuan"/>
+                        </button>
+                    </div>
+                    <group>
+                        <field name="enrollment_id" options="{'no_create': True, 'no_open': True}"/>
+                        <field name="siswa_id"/>
+                        <field name="modul_id" invisible="1"/>
+                    </group>
+                    
+                    <notebook>
+                        <page string="Detail Pertemuan">
+                            <field name="attendance_line_ids">
+                                <tree editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="pertemuan_ke"/>
+                                    <field name="status"/>
+                                    <field name="trainer_id"/>
+                                    <field name="tanggal_waktu"/>
+                                    <field name="notes"/>
+                                    <field name="materi_id" domain="[('modul_id', '=', parent.modul_id)]" options="{'no_create': True}"/>
+                                    <field name="google_drive_folder_url" widget="url" text="Lihat Folder"/>
+                                    <button name="action_view_drive_files" type="object" icon="fa-images" string="Lihat File"
+                                        attrs="{'invisible': [('id', '=', False)]}"/>
+                                    <button name="action_upload_files_to_drive" type="object" icon="fa-upload" string="Upload"
+                                        attrs="{'invisible': [('id', '=', False)]}"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_absensi_siswa_absensi" model="ir.actions.act_window">
+        <field name="name">Absensi Siswa</field>
+        <field name="res_model">absensi.siswa.absensi</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem 
+        id="menu_absensi_siswa_absensi_detail"
+        name="Absensi Siswa"
+        action="action_absensi_siswa_absensi"
+        parent="menu_absensi_siswa_absensi"
+        sequence="10"/>
+</odoo>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Top level menu -->
+        <menuitem 
+            id="whatsapp_root_menu" 
+            name="WhatsApp" 
+            sequence="90"
+            groups="whatsapp.group_whatsapp_manager"/>
+
+        <!-- Menu item to open the wizard -->
+        <menuitem 
+            id="whatsapp_send_message_menu" 
+            name="Kirim Pesan" 
+            parent="whatsapp_root_menu" 
+            action="action_whatsapp_send_wizard" 
+            sequence="10"/>
+
+    </data>
+</odoo>

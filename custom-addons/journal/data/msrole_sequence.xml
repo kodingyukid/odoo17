@@ -1,0 +1,11 @@
+<odoo>
+    <data>
+        <record id="seq_ms_role" model="ir.sequence">
+            <field name="name">Master Role</field>
+            <field name="code">it.ac.ms.role</field>
+            <field name="prefix">RL</field>
+            <field name="padding">2</field>
+            <field name="number_next">1</field>
+        </record>
+    </data>
+</odoo>

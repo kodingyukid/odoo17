@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_absensi_siswa_absensi,absensi.siswa.absensi,model_absensi_siswa_absensi,base.group_user,1,1,1,1
+access_absensi_siswa_absensi_line,absensi.siswa.absensi.line,model_absensi_siswa_absensi_line,base.group_user,1,1,1,1
+access_upload_wizard,upload.wizard,model_upload_wizard,base.group_user,1,1,1,1
+access_absensi_attachment,absensi.drive.attachment,model_absensi_drive_attachment,base.group_user,1,1,1,1

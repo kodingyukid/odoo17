@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_absensi_siswa_trainer" model="ir.actions.act_window">
+        <field name="name">Trainer (Employee)</field>
+        
+        <field name="res_model">hr.employee</field>
+        
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem 
+        id="menu_absensi_siswa_trainer"
+        name="Data Trainer (Employee)"
+        action="action_absensi_siswa_trainer"
+        parent="menu_absensi_siswa_konfigurasi"
+        sequence="20"/>
+</odoo>

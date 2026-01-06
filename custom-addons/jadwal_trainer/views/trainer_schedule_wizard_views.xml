@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="trainer_schedule_recurrence_wizard_form" model="ir.ui.view">
+            <field name="name">trainer.schedule.recurrence.wizard.form</field>
+            <field name="model">trainer.schedule.recurrence.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Make Schedule Recurrent">
+                    <sheet>
+                        <group>
+                            <field name="schedule_id" readonly="1"/>
+                        </group>
+                        <group string="Recurrence Rule">
+                            <field name="rule_type"/>
+                            <field name="interval"/>
+                            <field name="end_type"/>
+                            <field name="count"/>
+                            <field name="end_date"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name="action_generate_recurrence" type="object" string="Generate Recurrence" class="oe_highlight"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

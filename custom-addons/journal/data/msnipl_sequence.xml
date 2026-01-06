@@ -1,0 +1,11 @@
+<odoo>
+  <data noupdate="1">
+    <record id="seq_it_ac_ms_nipl" model="ir.sequence">
+      <field name="name">Customer NIPL</field>
+      <field name="code">it.ac.ms.nipl</field>
+      <field name="prefix">NIPL</field>
+      <field name="padding">5</field>
+      <field name="number_next">1</field>
+    </record>
+  </data>
+</odoo>

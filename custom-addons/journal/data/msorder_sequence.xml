@@ -1,0 +1,11 @@
+<odoo>
+    <data>
+        <record id="seq_ms_order" model="ir.sequence">
+            <field name="name">Master Order</field>
+            <field name="code">it.ac.ms.order</field>
+            <field name="prefix">ORD</field>
+            <field name="padding">4</field>
+            <field name="number_next">1</field>
+        </record>
+    </data>
+</odoo>
